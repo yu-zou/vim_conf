@@ -1,0 +1,42 @@
+{
+	"suggest.noselect": true,
+	"inlayHint.display": false,
+	"languageserver": {
+		"verible": {
+			"command": "verible-verilog-ls",
+			"filetypes": [
+				"verilog",
+				"systemverilog"
+			],
+			"args": [
+				"--port_declarations_alignment=align",
+				"--indentation_spaces=4",
+				"--assignment_statement_alignment=align",
+				"--module_net_variable_alignment=infer",
+				"--column_limit=100",
+				"--formal_parameters_alignment=align",
+				"--named_parameter_alignment=align",
+				"--rules=-explicit-parameter-storage-type,-parameter-name-style"
+			]
+		},
+		"go": {
+			"command": "gopls",
+			"rootPatterns": [
+				"go.work",
+				"go.mod",
+				".vim/",
+				".git/",
+				".hg/"
+			],
+			"filetypes": [
+				"go"
+			],
+			"initializationOptions": {
+				"usePlaceholders": true
+			}
+		}
+	},
+	"python.formatting.autopep8Path": "/home/yzou/.local/bin/autopep8",
+	"coc.preferences.formatOnSaveFiletypes": ["cpp", "c", "python"],
+	"coc.preferences.formatOnSave": true
+}
