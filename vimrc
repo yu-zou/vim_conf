@@ -56,13 +56,15 @@ let g:atv_autoinst_io_dir = 0
 let g:atv_autoinst_keep_chg = 1
 let g:atv_crossdir_mode = 1
 "0:normal 1:filelist 2:tags"
-let g:atv_crossdir_flist_browse=0
+let g:atv_crossdir_flist_browse = 0
 let g:atv_crossdir_tags_browse = 0
 let g:atv_autoinst_incl_width = 0
 let g:atv_autoinst_95_support = 1
 let g:atv_autoinst_incl_cmnt = 0
-map <Leader>atic :call AutoInst(0)<ESC>
-map <Leader>atia :call AutoInst(1)<ESC>
+let g:atv_crossdir_flist_file = './verible.filelist'
+map <Leader>atic :call g:AutoInst(0)<ESC>
+map <Leader>atia :call g:AutoInst(1)<ESC>
+map <Leader>atip :call g:AutoPara(0)<ESC>
 
 " Fuzzy search
 Plug 'Yggdroot/LeaderF', {'do': ':LeaderfInstallCExtension'}

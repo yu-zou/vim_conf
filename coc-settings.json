@@ -37,6 +37,6 @@
 		}
 	},
 	"python.formatting.autopep8Path": "/home/yzou/.local/bin/autopep8",
-	"coc.preferences.formatOnSaveFiletypes": ["cpp", "c", "python"],
+	"coc.preferences.formatOnSaveFiletypes": ["cpp", "c", "python", "systemverilog", "verilog"],
 	"coc.preferences.formatOnSave": true
 }
