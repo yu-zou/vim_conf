@@ -28,7 +28,7 @@ echo "Configuring .vimrc"
 echo 'source '"$PWD/vimrc" >> $HOME/.vimrc
 
 echo "Install newest node"
-curl -sL install-node.vercel.app/lts | bash -s -- -P $PWD
-echo 'export PATH='"$PWD"'/bin:$PATH' >> $HOME/.bashrc
+tar -xvf ./node-v20.17.0-linux-x64.tar.xz
+echo 'export PATH='"$PWD"'/node-v20.17.0-linux-x64.tar.xz/bin:$PATH' >> $HOME/.bashrc
 
 echo "Configuration done"
