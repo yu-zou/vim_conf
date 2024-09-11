@@ -1,7 +1,7 @@
 # Install newest vim inside current folder
 echo "Install Vim 9.1 inside current folder"
 
-sudo apt install libncurses5-dev libgtk2.0-dev libatk1.0-dev libcairo2-dev libx11-dev libxpm-dev libxt-dev python2-dev python3-dev libperl-dev git -y
+sudo apt install libncurses5-dev libncurses-dev libgtk2.0-dev libatk1.0-dev libcairo2-dev libx11-dev libxpm-dev libxt-dev python2-dev python3-dev libperl-dev git -y
 
 git submodule update --progress --init --recursive
 cd vim
