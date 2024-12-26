@@ -31,10 +31,11 @@ echo "Install newest node"
 tar -xvf ./node-v20.17.0-linux-x64.tar.xz
 echo 'export PATH='"$PWD"'/node-v20.17.0-linux-x64.tar.xz/bin:$PATH' >> $HOME/.bashrc
 
-ln -s $PWD/coc-settings.json ~/.vim/coc-settings.json
+mkdir -p $HOME/.vim
+ln -s $PWD/coc-settings.json $HOME/.vim/coc-settings.json
 
 echo "Install verible"
 tar -zxvf ./verible-v0.0-3724-gdec56671-linux-static-x86_64.tar.gz
-echo 'export PATH='"$PWD"'/verible-v0.0-3724-gdec56671/bin' >> $HOME/.bashrc
+echo 'export PATH='"$PWD"'/verible-v0.0-3724-gdec56671/bin:$PATH' >> $HOME/.bashrc
 
 echo "Configuration done"
