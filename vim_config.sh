@@ -29,7 +29,7 @@ echo 'source '"$PWD/vimrc" >> $HOME/.vimrc
 
 echo "Install newest node"
 tar -xvf ./node-v20.17.0-linux-x64.tar.xz
-echo 'export PATH='"$PWD"'/node-v20.17.0-linux-x64.tar.xz/bin:$PATH' >> $HOME/.bashrc
+echo 'export PATH='"$PWD"'/node-v20.17.0-linux-x64/bin:$PATH' >> $HOME/.bashrc
 
 mkdir -p $HOME/.vim
 ln -s $PWD/coc-settings.json $HOME/.vim/coc-settings.json
