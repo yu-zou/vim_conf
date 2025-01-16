@@ -9,29 +9,29 @@ endif
 """"""""""""""""""""""""""""""""""""""""""""""Plugins"""""""""""""""""""""""""""""""""""'""""""""""""""
 call plug#begin('~/.vim/bundle')
 
-" Match delimiter
+"""""""""""""""""""""""""""""""""""""""""""""" Match delimiter
 Plug 'Raimondi/delimitMate'
 " Disable ` quote for systemverilog/verilog
 au FileType verilog,systemverilog let b:delimitMate_quotes = "\"" 
 
-" File list
+""""""""""""""""""""""""""""""""""""""""""""""""""" File list
 Plug 'scrooloose/nerdtree'
 " Shortkey Map
 map <C-n> :NERDTreeToggle<CR>
 " Close vim if the only window left open is NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
-" Remeber last position when reopen
+""""""""""""""""""""""""""""""""""""""""""""""" Remeber last position when reopen
 Plug 'farmergreg/vim-lastplace'
 " Remember last position when reopen
 if has("autocmd")
 	au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g `\"" | endif
 endif
 
-" Commenter
+""""""""""""""""""""""""""""""""""""""""""""""""""""" Commenter
 Plug 'scrooloose/nerdcommenter'
 
-" Colorscheme Pack
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" Colorscheme Pack
 Plug 'rafi/awesome-vim-colorschemes'
 Plug 'folke/tokyonight.nvim'
 Plug 'arzg/vim-colors-xcode'
@@ -46,6 +46,7 @@ Plug 'honza/vim-snippets'
 let g:tex_flavor='latex'
 Plug 'vim-latex/vim-latex', {'for': 'tex'}
 
+" Coc.nvim
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Verilog plugin
@@ -85,6 +86,11 @@ noremap <unique> <leader>frc :Leaderf rg --live --cword<cr>
 
 " List key mappings
 Plug 'liuchengxu/vim-which-key'
+
+" TagBar
+Plug 'preservim/tagbar'
+noremap <leader>tb :TagbarOpenAutoClose<CR>
+let g:airline#extensions#tagbar#enabled=0
 
 " Doxygen Plugin
 Plug 'vim-scripts/DoxygenToolkit.vim'
@@ -218,7 +224,7 @@ imap <C-j> <Plug>(coc-snippets-expand-jump)
 """""""""""""""""""""""""' Coc Snippets Configuration End""""""""""""""""""""""
 
 " Must have Coc extensions
-let g:coc_global_extensions = ['coc-json', 'coc-snippets', 'coc-pyright']
+let g:coc_global_extensions = ['coc-json', 'coc-snippets', 'coc-pyright', 'coc-tsserver']
 
 """"""""""""""""""""""gopls configuration"""""""""""""""""""""""""
 autocmd BufWritePre *.go :call CocAction('runCommand', 'editor.action.organizeImport')
