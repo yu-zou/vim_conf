@@ -1,37 +1,37 @@
 " Required vim 9
 
+" Automatically install vim-plug
 let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
 if empty(glob(data_dir . '/autoload/plug.vim'))
     silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
     autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
-""""""""""""""""""""""""""""""""""""""""""""""Plugins"""""""""""""""""""""""""""""""""""'""""""""""""""
+" Plugins
 call plug#begin('~/.vim/bundle')
 
-"""""""""""""""""""""""""""""""""""""""""""""" Match delimiter
+" Match delimiter
 Plug 'Raimondi/delimitMate'
 " Disable ` quote for systemverilog/verilog
 au FileType verilog,systemverilog let b:delimitMate_quotes = "\"" 
 
-""""""""""""""""""""""""""""""""""""""""""""""""""" File list
+" File list
 Plug 'scrooloose/nerdtree'
 " Shortkey Map
-map <C-n> :NERDTreeToggle<CR>
+noremap <C-n> :NERDTreeToggle<CR>
 " Close vim if the only window left open is NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
-""""""""""""""""""""""""""""""""""""""""""""""" Remeber last position when reopen
+" Remeber last position when reopen
 Plug 'farmergreg/vim-lastplace'
-" Remember last position when reopen
 if has("autocmd")
 	au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g `\"" | endif
 endif
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""" Commenter
+" Commenter
 Plug 'scrooloose/nerdcommenter'
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" Colorscheme Pack
+" Colorscheme Pack
 Plug 'rafi/awesome-vim-colorschemes'
 Plug 'folke/tokyonight.nvim'
 Plug 'arzg/vim-colors-xcode'
@@ -95,6 +95,9 @@ let g:airline#extensions#tagbar#enabled=0
 " Doxygen Plugin
 Plug 'vim-scripts/DoxygenToolkit.vim'
 
+" Copilot
+Plug 'github/copilot.vim', {'for': ['tex', 'cpp']}
+
 call plug#end()
 """"""""""""""""""""""""""""""""""""""""""""""Plugins End"""""""""""""""""""""""""""""""'""""""""""""""
 
@@ -123,6 +126,7 @@ set scrolloff=5
 au BufRead,BufNewFile *.md setlocal spell
 au BufRead,BufNewFile *.md setlocal spelllang=en
 au BufRead,BufNewFile *.md setlocal spellfile=$HOME/.vim/spell/en.utf-8.add
+autocmd FileType tex syntax spell toplevel
 
 " Maintain undo history between sessions
 if !isdirectory($HOME."/.vim/undodir")
