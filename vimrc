@@ -13,7 +13,7 @@ call plug#begin('~/.vim/bundle')
 " Match delimiter
 Plug 'Raimondi/delimitMate'
 " Disable ` quote for systemverilog/verilog
-au FileType verilog,systemverilog let b:delimitMate_quotes = "\"" 
+au FileType verilog,systemverilog let b:delimitMate_quotes = "\""
 
 " File list
 Plug 'scrooloose/nerdtree'
@@ -25,16 +25,19 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 " Remeber last position when reopen
 Plug 'farmergreg/vim-lastplace'
 if has("autocmd")
-	au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g `\"" | endif
+    au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g `\"" | endif
 endif
 
 " Commenter
 Plug 'scrooloose/nerdcommenter'
+" Add one space after commenting symbol
+let g:NERDSpaceDelims = 1
 
 " Colorscheme Pack
 Plug 'rafi/awesome-vim-colorschemes'
 Plug 'folke/tokyonight.nvim'
 Plug 'arzg/vim-colors-xcode'
+Plug 'raphamorim/lucario'
 
 " Statusline Plugin
 Plug 'vim-airline/vim-airline'
@@ -96,7 +99,11 @@ let g:airline#extensions#tagbar#enabled=0
 Plug 'vim-scripts/DoxygenToolkit.vim'
 
 " Copilot
-Plug 'github/copilot.vim', {'for': ['tex', 'cpp']}
+Plug 'github/copilot.vim', {'for': ['tex', 'markdown', 'rust']}
+
+" Markdown
+Plug 'preservim/vim-markdown', {'for': 'markdown'}
+let g:vim_markdown_folding_disabled = 1
 
 call plug#end()
 """"""""""""""""""""""""""""""""""""""""""""""Plugins End"""""""""""""""""""""""""""""""'""""""""""""""
@@ -105,7 +112,9 @@ set t_Co=256
 set background=dark
 "colorscheme gruvbox
 colorscheme xcode
+" colorscheme lucario
 set termguicolors
+autocmd FileType markdown highlight htmlH1 cterm=none ctermfg=80
 
 syntax on
 set tabstop=4
@@ -128,6 +137,10 @@ au BufRead,BufNewFile *.md setlocal spelllang=en
 au BufRead,BufNewFile *.md setlocal spellfile=$HOME/.vim/spell/en.utf-8.add
 autocmd FileType tex syntax spell toplevel
 
+" Automated line break
+au BufRead,BufNewFile *.md setlocal textwidth=80
+au BufRead,BufNewFile *.tex setlocal textwidth=80
+
 " Maintain undo history between sessions
 if !isdirectory($HOME."/.vim/undodir")
     call mkdir($HOME."/.vim/undodir", "", 0700)
@@ -137,10 +150,6 @@ set undodir=~/.vim/undodir
 
 " Insert single word and back to normal mode
 nnoremap <C-i> i <ESC>r
-
-" Map <ESC> key to jk and kj
-inoremap jk <ESC>
-inoremap kj <ESC>
 
 " Filetype configuration of unrecognized file types
 au BufRead,BufNewFile *.vh set filetype=verilog
