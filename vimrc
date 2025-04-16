@@ -7,6 +7,7 @@ if empty(glob(data_dir . '/autoload/plug.vim'))
     autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
+""""""""""""""""""""""""""""""""""""""""""Plugins Installation Start"""""""""""""""""""""""""""""""'""""""""""""""
 " Plugins
 call plug#begin('~/.vim/bundle')
 
@@ -48,6 +49,7 @@ Plug 'honza/vim-snippets'
 " LaTex Plugin
 let g:tex_flavor='latex'
 Plug 'vim-latex/vim-latex', {'for': 'tex'}
+let g:Imap_FreezeImap=1
 
 " Coc.nvim
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -96,17 +98,17 @@ noremap <leader>tb :TagbarOpenAutoClose<CR>
 let g:airline#extensions#tagbar#enabled=0
 
 " Doxygen Plugin
-Plug 'vim-scripts/DoxygenToolkit.vim'
+Plug 'vim-scripts/DoxygenToolkit.vim', {'for': ['c', 'cpp']}
 
 " Copilot
-Plug 'github/copilot.vim', {'for': ['tex', 'markdown', 'rust']}
+Plug 'github/copilot.vim', {'for': ['tex', 'markdown', 'rust', 'make']}
 
 " Markdown
 Plug 'preservim/vim-markdown', {'for': 'markdown'}
 let g:vim_markdown_folding_disabled = 1
 
 call plug#end()
-""""""""""""""""""""""""""""""""""""""""""""""Plugins End"""""""""""""""""""""""""""""""'""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""Plugins Installation End"""""""""""""""""""""""""""""""'""""""""""""""
 
 set t_Co=256
 set background=dark
