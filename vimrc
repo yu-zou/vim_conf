@@ -101,7 +101,8 @@ let g:airline#extensions#tagbar#enabled=0
 Plug 'vim-scripts/DoxygenToolkit.vim', {'for': ['c', 'cpp']}
 
 " Copilot
-Plug 'github/copilot.vim', {'for': ['tex', 'markdown', 'rust', 'make']}
+Plug 'github/copilot.vim', {'for': ['tex', 'markdown', 'make']}
+let g:copilot_filetypes = {'*': v:false, 'tex': v:true}
 
 " Markdown
 Plug 'preservim/vim-markdown', {'for': 'markdown'}
