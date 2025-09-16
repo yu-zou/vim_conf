@@ -1,7 +1,14 @@
 # Install newest vim inside current folder
 echo "Install Vim 9.1 inside current folder"
 
-apt install libncurses5-dev libncurses-dev libgtk2.0-dev libatk1.0-dev libcairo2-dev libx11-dev libxpm-dev libxt-dev python2-dev python3-dev libperl-dev git -y
+apt install libncurses5-dev libncurses-dev libgtk2.0-dev \
+    libatk1.0-dev libcairo2-dev libx11-dev libxpm-dev \
+    libxt-dev python2-dev python3-dev libperl-dev git \
+    clnagd-11 \
+    ripgrep \
+    libper-dev \
+    libgtk-3-dev libgtk2.0-dev \
+    -y
 
 git submodule update --progress --init --recursive
 cd vim
@@ -15,7 +22,9 @@ vim_dest=$PWD
             --enable-perlinterp=yes \
             --enable-gui=gtk2 \
             --enable-cscope \
-            --prefix=$vim_dest
+            --prefix=$vim_dest \
+            --with-python3-command=/usr/bin/python3 \
+            --enable-fail-if-missing
 
 make -j VIMRUNTIMEDIR=$vim_dest/share/vim/vim91
 make -j install
@@ -39,3 +48,4 @@ tar -zxvf ./verible-v0.0-3724-gdec56671-linux-static-x86_64.tar.gz
 echo 'export PATH='"$PWD"'/verible-v0.0-3724-gdec56671/bin:$PATH' >> $HOME/.bashrc
 
 echo "Configuration done"
+echo "Need to source zshrc to take effect"

@@ -240,7 +240,7 @@ imap <C-j> <Plug>(coc-snippets-expand-jump)
 """""""""""""""""""""""""' Coc Snippets Configuration End""""""""""""""""""""""
 
 " Must have Coc extensions
-let g:coc_global_extensions = ['coc-json', 'coc-snippets', 'coc-pyright', 'coc-tsserver']
+let g:coc_global_extensions = ['coc-json', 'coc-snippets', 'coc-pyright', 'coc-tsserver', 'coc-clangd']
 
 """"""""""""""""""""""gopls configuration"""""""""""""""""""""""""
 autocmd BufWritePre *.go :call CocAction('runCommand', 'editor.action.organizeImport')
