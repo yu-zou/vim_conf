@@ -158,6 +158,7 @@ nnoremap <C-i> i <ESC>r
 au BufRead,BufNewFile *.vh set filetype=verilog
 au BufRead,BufNewFile *.v set filetype=verilog
 au BufRead,BufNewFile *.do set filetype=tcl
+au BufRead,BufNewFile *.ino set filetype=cpp
 
 "" Format options
 "au BufRead,BufNewFile *.sv set fo-=cro
